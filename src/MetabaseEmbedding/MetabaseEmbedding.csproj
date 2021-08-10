@@ -2,13 +2,32 @@
 
     <PropertyGroup>
         <TargetFramework>netstandard2.0</TargetFramework>
+        <PackageId>MetabaseEmbedding</PackageId>
+        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+        <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
+        <Version>1.0.0</Version>
+        <FileVersion>1.0.0</FileVersion>
+        <AssemblyVersion>1.0.0</AssemblyVersion>
+        <Authors>zlzforever@163.com;</Authors>
+        <Copyright>Copyright 2021 Lewis Zou</Copyright>
+        <Description>A library help to create metabase embedding url</Description>
+        <PackageTags>Metabase</PackageTags>
+        <PackageProjectUrl>https://github.com/zlzforever/MetabaseEmbedding</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/zlzforever/MetabaseEmbedding</RepositoryUrl>
+        <LangVersion>latest</LangVersion>
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="JWT" Version="8.2.3" />
-      <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="5.0.0" />
-      <PackageReference Include="Microsoft.Extensions.Options" Version="5.0.0" />
-      <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="5.0.0" />
+        <PackageReference Include="JWT" Version="8.2.3"/>
+        <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="5.0.0"/>
+        <PackageReference Include="Microsoft.Extensions.Options" Version="5.0.0"/>
+        <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="5.0.0"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Include="../../LICENSE.txt" Pack="true" PackagePath="LICENSE.txt"/>
     </ItemGroup>
 
 </Project>
