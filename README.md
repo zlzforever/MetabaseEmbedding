@@ -26,7 +26,7 @@ dotnet add package MetabaseEmbedding --version 1.0.0
   serviceCollection.AddMetabaseEmbedding(configuration);
   
   var generator = serviceProvider.GetRequiredService<IIFrameUrlGenerator>();
-  var url = generator.Create(1, 10);
+  var url = generator.Create(Resource.CreateDashboard(1));
 ```
 
 ## License
