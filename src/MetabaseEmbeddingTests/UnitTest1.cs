@@ -18,9 +18,7 @@ namespace MetabaseEmbeddingTests
             serviceCollection.AddMetabaseEmbedding(configuration);
             var serviceProvider = serviceCollection.BuildServiceProvider();
             var generator = serviceProvider.GetRequiredService<IIFrameUrlGenerator>();
-            var url = generator.Create(1, 10);
-            
-            
+            var url = generator.Create(Resource.CreateDashboard(1));
         }
     }
 }
