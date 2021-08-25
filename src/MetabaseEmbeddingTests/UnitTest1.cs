@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Microsoft.Extensions.DependencyInjection;
 using Xunit;
 using MetabaseEmbedding;
@@ -18,7 +19,14 @@ namespace MetabaseEmbeddingTests
             serviceCollection.AddMetabaseEmbedding(configuration);
             var serviceProvider = serviceCollection.BuildServiceProvider();
             var generator = serviceProvider.GetRequiredService<IIFrameUrlGenerator>();
-            var url = generator.Create(Resource.CreateDashboard(1));
+            var url = generator.Create(ResourceType.Dashboard, 9, new Dictionary<string, object>
+            {
+                { "type", "ZXXD" }
+            }, 10, new Dictionary<string, string>
+            {
+                { "bordered", "false" },
+                { "titled", "false" },
+            });
         }
     }
 }

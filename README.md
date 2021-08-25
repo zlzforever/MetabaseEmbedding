@@ -4,7 +4,7 @@ A library help to create metabase embedding url
 ## Install
 
 ```
-dotnet add package MetabaseEmbedding --version 1.0.0
+dotnet add package MetabaseEmbedding --version 1.0.2
 ```
 
 ## Usage
@@ -26,7 +26,14 @@ dotnet add package MetabaseEmbedding --version 1.0.0
   serviceCollection.AddMetabaseEmbedding(configuration);
   
   var generator = serviceProvider.GetRequiredService<IIFrameUrlGenerator>();
-  var url = generator.Create(Resource.CreateDashboard(1));
+  var url = generator.Create(ResourceType.Dashboard, 9, new Dictionary<string, object>
+  {
+    { "type", "xxx" }
+  }, 10, new Dictionary<string, string>
+  {
+    { "bordered", "false" },
+    { "titled", "false" }
+  });
 ```
 
 ## License

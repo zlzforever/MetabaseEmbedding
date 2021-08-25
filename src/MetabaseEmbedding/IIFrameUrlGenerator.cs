@@ -7,12 +7,13 @@ namespace MetabaseEmbedding
         /// <summary>
         /// Generate a iframe url
         /// </summary>
-        /// <param name="resource"></param>
-        /// <param name="exp">Minute</param>
+        /// <param name="type"></param>
+        /// <param name="id"></param>
         /// <param name="parameters"></param>
+        /// <param name="exp">Minute</param>
         /// <param name="displayOptions"></param>
         /// <returns>URL</returns>
-        string Create(Resource resource, int exp = 10,
-            Dictionary<string, object> parameters = null, Dictionary<string, object> displayOptions = null);
+        string Create(ResourceType type, int id, Dictionary<string, object> parameters = null, int exp = 10,
+            Dictionary<string, string> displayOptions = null);
     }
 }
