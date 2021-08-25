@@ -1,36 +1,32 @@
 using System.Collections.Generic;
-using System.Text.Json;
 
 // ReSharper disable UnusedAutoPropertyAccessor.Global
 
 namespace MetabaseEmbedding
 {
-    internal class Payload
+    public class Payload
     {
-        private static readonly Dictionary<string, object> EmptyObject = new();
+        private static readonly Dictionary<string, string> EmptyObject = new();
 
-        public IReadOnlyDictionary<string, int> Resource { get; }
-        public IReadOnlyDictionary<string, object> Params { get; }
+        public Dictionary<string, int> Resource { get; set; }
+        public Dictionary<string, string> Params { get; set; }
 
         /// <summary>
         /// Exp minute
         /// </summary>
-        public long Exp { get; }
+        public long Exp { get; set; }
 
-        private Payload(Dictionary<string, int> resource,
-            Dictionary<string, object> parameters, long exp = 10)
+        public static Payload Create(ResourceType type, int id, Dictionary<string, string> parameters, long exp = 10)
         {
-            Resource = resource;
-            Params = parameters;
-            Exp = exp;
-        }
-
-        public static Payload Create(ResourceType type, int id, Dictionary<string, object> parameters, long exp = 10)
-        {
-            return new Payload(new Dictionary<string, int>
+            return new Payload
             {
-                { type.Name, id }
-            }, parameters ?? EmptyObject, exp);
+                Resource = new Dictionary<string, int>
+                {
+                    { type.Name, id }
+                },
+                Params = parameters ?? EmptyObject,
+                Exp = exp
+            };
         }
 
         public override string ToString()

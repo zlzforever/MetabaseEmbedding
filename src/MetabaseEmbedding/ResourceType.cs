@@ -1,3 +1,5 @@
+using System;
+
 namespace MetabaseEmbedding
 {
     public class ResourceType
@@ -10,6 +12,25 @@ namespace MetabaseEmbedding
         public override string ToString()
         {
             return Name;
+        }
+
+        public static ResourceType Get(string name)
+        {
+            switch (name)
+            {
+                case "question":
+                {
+                    return Question;
+                }
+                case "dashboard":
+                {
+                    return Dashboard;
+                }
+                default:
+                {
+                    throw new NotSupportedException($"Not supported type {name}");
+                }
+            }
         }
 
         private ResourceType(string name)

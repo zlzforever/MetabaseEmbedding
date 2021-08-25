@@ -18,10 +18,8 @@ namespace MetabaseEmbedding
             _options = options.CurrentValue;
         }
 
-        public string Create(ResourceType type, int id, Dictionary<string, object> parameters = null, int exp = 10,
-            Dictionary<string, string> displayOptions = null)
+        public string Create(Payload payload, Dictionary<string, string> displayOptions = null)
         {
-            var payload = Payload.Create(type, id, parameters, DateTimeOffset.Now.ToUnixTimeSeconds() + exp * 60);
             var algorithm = new HMACSHA256Algorithm(); // symmetric
             var encoder = new JwtEncoder(algorithm, JsonSerializer.Instance, UrlEncoder);
             var token = encoder.Encode(payload, _options.SecretKey);
@@ -30,7 +28,14 @@ namespace MetabaseEmbedding
                 ? string.Empty
                 : string.Join("&", displayOptions.Select(x => $"{x.Key}={x.Value}"));
             return
-                $"{_options.SiteUrl}/embed/{type}/{token}#{displayOptionsUrl}";
+                $"{_options.SiteUrl}/embed/{payload.Resource.Keys.First()}/{token}#{displayOptionsUrl}";
+        }
+
+        public string Create(ResourceType type, int id, Dictionary<string, string> parameters = null, int exp = 10,
+            Dictionary<string, string> displayOptions = null)
+        {
+            var payload = Payload.Create(type, id, parameters, DateTimeOffset.Now.ToUnixTimeSeconds() + exp * 60);
+            return Create(payload, displayOptions);
         }
     }
 }

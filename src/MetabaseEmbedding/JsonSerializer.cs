@@ -1,5 +1,8 @@
+using System.Runtime.CompilerServices;
 using System.Text.Json;
 using JWT;
+
+[assembly: InternalsVisibleTo("MetabaseEmbeddingTests")]
 
 namespace MetabaseEmbedding
 {
